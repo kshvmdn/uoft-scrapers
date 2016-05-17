@@ -39,6 +39,10 @@ from .scrapers.events import Events
 from .scrapers.libraries import Libraries
 
 from .scrapers.dates import Dates
+from .scrapers.dates.utsg import UTSGDates
+from .scrapers.dates.utm import UTMDates
+from .scrapers.dates.utsc import UTSCDates
+
 
 class NullHandler(logging.Handler):
 

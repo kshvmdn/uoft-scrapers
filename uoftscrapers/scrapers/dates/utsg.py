@@ -1,4 +1,5 @@
 from ..utils import Scraper
+from .dates_helpers import *
 from bs4 import BeautifulSoup
 from collections import OrderedDict
 from datetime import datetime
@@ -15,22 +16,7 @@ class UTSGDates:
     def scrape(location='.', year=None, save=True):
         Scraper.logger.info('UTSGDates initialized.')
 
-        docs = OrderedDict()
-
-        for faculty in ArtSciDates, EngDates:
-            dates = faculty.scrape(location, year=year, save=False)
-
-            if dates is None:
-                continue
-
-            for date, doc in dates.items():
-                if date not in docs:
-                    docs[date] = OrderedDict([
-                        ('date', date),
-                        ('events', [])
-                    ])
-
-                docs[date]['events'].extend(doc['events'])
+        docs = merge_events([ArtSciDates, EngDates], location, year)
 
         if save:
             for date, doc in docs.items():

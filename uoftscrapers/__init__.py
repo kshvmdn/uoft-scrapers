@@ -4,6 +4,11 @@ import sys
 
 from .scrapers.courses import Courses
 
+from .scrapers.course_evaluations import CourseEvaluations
+from .scrapers.course_evaluations.utsg import UTSGCourseEvaluations
+from .scrapers.course_evaluations.utsc import UTSCCourseEvaluations
+from .scrapers.course_evaluations.utm import UTMCourseEvaluations
+
 from .scrapers.buildings import Buildings
 
 from .scrapers.textbooks import Textbooks
@@ -40,8 +45,8 @@ from .scrapers.libraries import Libraries
 
 from .scrapers.dates import Dates
 
-class NullHandler(logging.Handler):
 
+class NullHandler(logging.Handler):
     def emit(self, record):
         pass
 

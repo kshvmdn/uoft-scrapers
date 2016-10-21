@@ -175,7 +175,9 @@ class ArtSciExams:
     @staticmethod
     def get_exam_periods(year):
         if not year:
-            year = datetime.today().year
+            today = datetime.today()
+            year = today.year + (1 if today.month >= 10 and today.day >= 15
+                                 else 0)
 
         periods = []
         for m in ('dec', 'apr', 'june', 'aug'):
